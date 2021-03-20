@@ -1,13 +1,13 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import { Button, Paper, Tabs, Tab, Breadcrumbs } from '@material-ui/core';
-import { saveAs } from 'file-saver';
-import Dropzone from 'react-dropzone'
+import { Paper, Breadcrumbs } from '@material-ui/core';
+// import { saveAs } from 'file-saver';
+// import Dropzone from 'react-dropzone'
 import Uploader from './uploader.js'
-import {createStore, combineReducers} from 'redux';
-import {Provider, useDispatch} from 'react-redux';
+// import {createStore, combineReducers} from 'redux';
+// import {Provider, useDispatch} from 'react-redux';
 import Gallery from './gallery';
 import { useDB } from "./visdb";
 

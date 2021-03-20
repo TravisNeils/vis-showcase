@@ -1,37 +1,19 @@
 import firebase from "firebase";
-import React, { Component, useEffect } from "react";
-import {useState} from 'react';
-import AsyncImage from "./AsyncImage";
-import AsyncHTML from "./AsyncHtml";
+import React from "react";
+// import {useState} from 'react';
+import Vis from "./vis";
 import { useDB } from "./visdb";
 
-let db = firebase.firestore();
-
-function Vis(props){
-    return <div className="message-row"
-    style={{justifyContent: props.isMe ? 'flex-end' : 'flex-start'}}>
-    <div className="message">
-      <div className="message-name">{props.name}</div>
-      {props.link}
-    </div>
-  </div>
-}
-
-
+// let db = firebase.firestore();
 
 function Gallery(){
     
     const visnames = useDB(false);
 
     return   <div>
-    <p></p>
   {visnames.map((msg,i)=> {
-      console.log(msg.name);
-      if(msg.name.split('.').pop() === 'html'){
-          return <AsyncHTML image = {msg.name} />
-
-      }
-    return <AsyncImage image = {msg.name} />
+      console.log(msg.filename);
+      return <Vis src = {msg.url} filename={msg.filename} keyval={i} name={msg.name} key={i} heightval = {msg.heightval}/>
   })}
 </div>
 }

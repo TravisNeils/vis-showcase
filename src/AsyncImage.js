@@ -8,38 +8,31 @@ export default class AsyncImage extends React.Component {
         this.state =
             {
                 loading: true,
-                mounted: true,
                 image: "/images/logoblue.jpg",
                 url: "",
+                key:""
             }
     }
 
     componentDidMount() {
         this.setState({ isMounted: true })
         this.getAndLoadHttpUrl()
-
     }
 
     async getAndLoadHttpUrl() {
         if (this.state.mounted == true) {
-            const ref = firebase
-            .storage().ref("images").child(this.props.image);
-            
+            const ref = firebase.storage().ref("images").child(this.props.image);
+            console.log(this.props.image + "");
             ref.getDownloadURL().then(data => {
                 this.setState({ url: data })
                 this.setState({ loading: false })
-                console.log(data)
+                console.log(data) 
             }).catch(error => {
                 this.setState({ url: "/images/logoblue.jpg" })
                 this.setState({ loading: false })
             })
         }
     }
-
-    componentWillUnmount() {
-        this.setState({ isMounted: false })
-    }
-
 
     componentWillReceiveProps(props) {
         this.props = props

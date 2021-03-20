@@ -1,5 +1,5 @@
 import firebase from "firebase";
-import React, { Component, useEffect } from "react";
+import {useEffect } from "react";
 import {useState} from 'react';
 
 let db = firebase.firestore();
@@ -21,8 +21,8 @@ function useDB(study){
 
     useEffect(() => {
         const collection = study ? 
-            db.collection("studies").where('study','==',study) :
-            db.collection("studies")
+            db.collection("vis").where('study','==',study) :
+            db.collection("vis")
         
         collection.onSnapshot(snap=> snap.docChanges().forEach(c=> {
             const {doc, type} = c
